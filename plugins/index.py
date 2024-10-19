@@ -15,7 +15,7 @@ inclient = pymongo.MongoClient(DATABASE_URI)
 indb = inclient[DATABASE_NAME]
 incol = indb['index']
 
-@Client.on_callback_query(filters.regex(r'^index'))
+@Client.on_callback_query(filters.regex(r'^index'), group=1)
 async def index_files(bot, query):
     if query.data.startswith('index_cancel'):
         temp.CANCEL = True
@@ -287,7 +287,7 @@ async def send_for_index(bot, message):
     await message.reply('ThankYou For the Contribution, Wait For My Moderators to verify the files.')
 
 
-@Client.on_message(filters.command('setskip') & filters.user(ADMINS))
+@Client.on_message(filters.command('setskip') & filters.user(ADMINS), group=1)
 async def set_skip_number(bot, message):
     if ' ' in message.text:
         _, skip = message.text.split(" ")

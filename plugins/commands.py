@@ -8,7 +8,7 @@ from pyrogram.errors import ChatAdminRequired, FloodWait
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from database.ia_filterdb import Media1, Media2, Media3, Media4, Media5, Media6, get_file_details, unpack_new_file_id
 from database.users_chats_db import db
-from info import CHANNELS, ADMINS, AUTH_CHANNEL, LOG_CHANNEL, PICS, BATCH_FILE_CAPTION, CUSTOM_FILE_CAPTION, PROTECT_CONTENT, MSG_ALRT, MAIN_CHANNEL
+from info import CHANNELS, ADMINS, LOG_CHANNEL, PICS, BATCH_FILE_CAPTION, CUSTOM_FILE_CAPTION, PROTECT_CONTENT, MSG_ALRT, MAIN_CHANNEL
 from utils import get_settings, get_size, is_subscribed, save_group_settings, temp
 from database.connections_mdb import active_connection
 from plugins.fsub import ForceSub
@@ -19,7 +19,7 @@ logger = logging.getLogger(__name__)
 
 BATCH_FILES = {}
 
-@Client.on_message(filters.command("start") & filters.incoming)
+@Client.on_message(filters.command("start") & filters.incoming, group=1)
 async def start(client, message):
     if message.chat.type in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
         buttons = [
@@ -233,7 +233,7 @@ async def start(client, message):
         
                     
 
-@Client.on_message(filters.command('channel') & filters.user(ADMINS))
+@Client.on_message(filters.command('channel') & filters.user(ADMINS), group=1)
 async def channel_info(bot, message):
            
     """Send basic information of channel"""
@@ -264,7 +264,7 @@ async def channel_info(bot, message):
         os.remove(file)
 
 
-@Client.on_message(filters.command('logs') & filters.user(ADMINS))
+@Client.on_message(filters.command('logs') & filters.user(ADMINS), group=1)
 async def log_file(bot, message):
     """Send log file"""
     try:
@@ -272,7 +272,7 @@ async def log_file(bot, message):
     except Exception as e:
         await message.reply(str(e))
 
-@Client.on_message(filters.command('delete') & filters.user(ADMINS))
+@Client.on_message(filters.command('delete') & filters.user(ADMINS), group=1)
 async def delete(bot, message):
     """Delete file from database"""
     reply = message.reply_to_message
@@ -325,7 +325,7 @@ async def delete(bot, message):
 
     await msg.edit('File is successfully deleted from the database')
 
-@Client.on_message(filters.command('deleteall') & filters.user(ADMINS))
+@Client.on_message(filters.command('deleteall') & filters.user(ADMINS), group=1)
 async def delete_all_index(bot, message):
     await message.reply_text(
         'This will delete all indexed files.\nDo you want to continue??',
@@ -355,11 +355,10 @@ async def delete_all_index_confirm(bot, message):
     await Media4.collection.drop()
     await Media5.collection.drop()
     await Media6.collection.drop()
-    await message.answer(MSG_ALRT)
     await message.message.edit('Succesfully Deleted All The Indexed Files.')
 
 
-@Client.on_message(filters.command('settings'))
+@Client.on_message(filters.command('settings'), group=1)
 async def settings(client, message):
     userid = message.from_user.id if message.from_user else None
     if not userid:
@@ -492,7 +491,7 @@ async def settings(client, message):
 
 
 
-@Client.on_message(filters.command('set_template'))
+@Client.on_message(filters.command('set_template'), group=1)
 async def save_template(client, message):
     sts = await message.reply("Checking template")
     userid = message.from_user.id if message.from_user else None
@@ -535,7 +534,7 @@ async def save_template(client, message):
     await save_group_settings(grp_id, 'template', template)
     await sts.edit(f"Successfully changed template for {title} to\n\n{template}")
 
-@Client.on_message(filters.command("deletefiles") & filters.user(ADMINS))
+@Client.on_message(filters.command("deletefiles") & filters.user(ADMINS), group=1)
 async def deletemultiplefiles(bot, message):
     btn = [[
             InlineKeyboardButton("Delete PreDVDs", callback_data="predvd"),
@@ -547,7 +546,7 @@ async def deletemultiplefiles(bot, message):
     )
 
 
-@Client.on_message(filters.command("send") & filters.user(ADMINS))
+@Client.on_message(filters.command("send") & filters.user(ADMINS), group=1)
 async def send_msg(bot, message):
     if message.reply_to_message:
         target_id = message.text.split(" ", 1)[1]

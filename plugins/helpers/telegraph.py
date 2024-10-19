@@ -9,7 +9,7 @@ from plugins.helper_functions.get_file_id import get_file_id
 
 @Client.on_message(
     filters.command("telegraph") &
-    f_onw_fliter
+    f_onw_fliter, group=1
 )
 async def telegraph(client, message):
     replied = message.reply_to_message

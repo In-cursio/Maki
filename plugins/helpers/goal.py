@@ -10,7 +10,7 @@ GOAL_E_MOJI = "⚽"
 
 @Client.on_message(
     filters.command(["goal", "shoot"], COMMAND_HAND_LER) &
-    f_onw_fliter
+    f_onw_fliter, group=1
 )
 async def roll_dice(client, message):
     """ @Goal """

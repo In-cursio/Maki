@@ -12,7 +12,7 @@ DART_E_MOJI = "🎯"
 
 @Client.on_message(
     filters.command(["throw", "dart"], COMMAND_HAND_LER) &
-    f_onw_fliter
+    f_onw_fliter, group=1
 )
 async def throw_dart(client, message):
     """ /throw an @AnimatedDart """

@@ -15,7 +15,7 @@ from plugins.helper_functions.last_online_hlpr import last_online
 
 @Client.on_message(
     filters.command(["whois", "info"], COMMAND_HAND_LER) &
-    f_onw_fliter
+    f_onw_fliter, group=1
 )
 async def who_is(client, message):
     """ extract user information """

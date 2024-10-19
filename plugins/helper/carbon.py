@@ -27,7 +27,7 @@ async def make_carbon(code):
     return image
 
 
-@bot.on_message(filters.command("carbon"))
+@bot.on_message(filters.command("carbon"), group=1)
 async def carbon_func(_, message):
     if not message.reply_to_message:
         return await message.reply_text(

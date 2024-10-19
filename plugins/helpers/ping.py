@@ -12,12 +12,12 @@ ALIVE = "<b>ചത്തിട്ടില്ല മുത്തേ ഇവിട
 # -- Constants End -- #
 
 
-@Client.on_message(filters.command("alive", COMMAND_HAND_LER) & f_onw_fliter)
+@Client.on_message(filters.command("alive", COMMAND_HAND_LER) & f_onw_fliter, group=1)
 async def check_alive(_, message):
     await message.reply_text(ALIVE)
 
 
-@Client.on_message(filters.command("ping", COMMAND_HAND_LER) & f_onw_fliter)
+@Client.on_message(filters.command("ping", COMMAND_HAND_LER) & f_onw_fliter, group=1)
 async def ping(_, message):
     start_t = time.time()
     rm = await message.reply_text("...")

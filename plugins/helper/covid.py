@@ -8,7 +8,7 @@ API = "https://api.sumanjay.cf/covid/?country="
 
 BUTTONS = InlineKeyboardMarkup([[InlineKeyboardButton("𝙲𝙻𝙾𝚂𝙴", callback_data='close_data')]])
 
-@Client.on_message(filters.command("covid"))
+@Client.on_message(filters.command("covid"), group=1)
 async def reply_info(client, message):
     query = message.text.split(None, 1)[1]
     await message.reply_photo(

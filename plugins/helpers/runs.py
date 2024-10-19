@@ -40,7 +40,7 @@ RUN_STRINGS = (
 
 @Client.on_message(
     filters.command("runs", COMMAND_HAND_LER) &
-    f_onw_fliter
+    f_onw_fliter, group=1
 )
 async def runs(_, message):
     """ /runs strings """
