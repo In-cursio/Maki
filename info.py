@@ -11,6 +11,8 @@ from collections import defaultdict
 from typing import Dict, List, Union
 from pyrogram import Client
 
+load_dotenv(override=True)
+
 id_pattern = re.compile(r'^.\d+$')
 def is_enabled(value, default):
     if value.lower() in ["true", "yes", "1", "enable", "y"]:
@@ -97,7 +99,7 @@ MAIN_CHANNEL = environ.get('MAIN_CHANNEL',"https://t.me/CV_Official_channel")
 FILE_FORWARD = environ.get('FILE_FORWARD',"https://t.me/+TMCviP7KUY8yZjI9")
 MSG_ALRT = environ.get('MSG_ALRT', '𝐓𝐡𝐚𝐧𝐤 𝐲𝐨𝐮 𝐒𝐢𝐫 💜')
 FILE_CHANNEL = int(environ.get('FILE_CHANNEL', 0))
-LOG_CHANNEL =-1002116542152
+LOG_CHANNEL =int(environ.get('LOG_CHANNEL', -1002116542152))
 SUPPORT_CHAT = environ.get('SUPPORT_CHAT', 'CV_linkZ')
 AUTO_DELETE = is_enabled((environ.get('AUTO_DELETE', "False")), False)
 P_TTI_SHOW_OFF = is_enabled((environ.get('P_TTI_SHOW_OFF', "False")), False)
@@ -116,12 +118,12 @@ PROTECT_CONTENT = is_enabled((environ.get('PROTECT_CONTENT', "False")), False)
 PUBLIC_FILE_STORE = is_enabled((environ.get('PUBLIC_FILE_STORE', "False")), False)
 
 #Fsub
-auth_channel = environ.get('AUTH_CHANNEL', "-1002177334603")
-AUTH_CHANNEL = int(auth_channel) if auth_channel and id_pattern.search(auth_channel) else None
+# auth_channel = environ.get('AUTH_CHANNEL', "-1002177334603")
+# AUTH_CHANNEL = int(auth_channel) if auth_channel and id_pattern.search(auth_channel) else None
 # Set to False inside the bracket if you don't want to use Request Channel else set it to Channel ID
-REQ_CHANNEL =environ.get('REQ_CHANNEL', "-1002177334603")
-REQ_CHANNEL = int(REQ_CHANNEL) if REQ_CHANNEL and id_pattern.search(REQ_CHANNEL) else False
-JOIN_REQS_DB = environ.get("JOIN_REQS_DB", DATABASE_URI)
+# REQ_CHANNEL =environ.get('REQ_CHANNEL', "-1002177334603")
+# REQ_CHANNEL = int(REQ_CHANNEL) if REQ_CHANNEL and id_pattern.search(REQ_CHANNEL) else False
+# JOIN_REQS_DB = environ.get("JOIN_REQS_DB", DATABASE_URI)
 
 LOG_STR = "Current Cusomized Configurations are:-\n"
 LOG_STR += ("IMDB Results are enabled, Bot will be showing imdb details for you queries.\n" if IMDB else "IMBD Results are disabled.\n")

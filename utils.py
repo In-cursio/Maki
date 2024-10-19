@@ -1,7 +1,7 @@
 import logging
 from pyrogram.errors import InputUserDeactivated, UserNotParticipant, FloodWait, UserIsBlocked, PeerIdInvalid
-from info import AUTH_CHANNEL, LONG_IMDB_DESCRIPTION, MAX_LIST_ELM, ADMINS, REQ_CHANNEL
-from database.join_reqs import JoinReqs as db2
+from info import LONG_IMDB_DESCRIPTION, MAX_LIST_ELM, ADMINS
+from database.fsub_db import FSub as db2
 from imdb import Cinemagoer
 import asyncio
 from pyrogram.types import Message, InlineKeyboardButton
@@ -14,6 +14,7 @@ from typing import List
 from database.users_chats_db import db
 from bs4 import BeautifulSoup
 import requests
+
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
@@ -43,17 +44,20 @@ class temp(object):
     SETTINGS = {}
 
 async def is_subscribed(bot, query):
+    REQ_CHANNEL = await db2().get_req_channel()
+    AUTH_CHANNEL = await db2().get_auth_channel()
     if not AUTH_CHANNEL and not REQ_CHANNEL:
         return True
     elif query.from_user.id in ADMINS:
         return True
 
-    if db2().isActive():
-        user = await db2().get_user(query.from_user.id)
-        if user:
-            return True
-        else:
-            return False
+    if REQ_CHANNEL:
+        if db2().isActive():
+            user = await db2().get_user(REQ_CHANNEL, query.from_user.id)
+            if user:
+                return True
+            else:
+                return False
 
     if not AUTH_CHANNEL:
         return True

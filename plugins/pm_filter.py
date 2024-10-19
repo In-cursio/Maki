@@ -10,8 +10,8 @@ from Script import script
 import pyrogram
 from database.connections_mdb import active_connection, all_connections, delete_connection, if_active, make_active, \
     make_inactive
-from info import ADMINS, AUTH_CHANNEL, FILE_CHANNEL, AUTH_USERS, CUSTOM_FILE_CAPTION, AUTH_GROUPS, P_TTI_SHOW_OFF, IMDB, \
-    SINGLE_BUTTON, SPELL_CHECK_REPLY, IMDB_TEMPLATE, SPELL_IMG, MSG_ALRT, FILE_FORWARD, MAIN_CHANNEL, LOG_CHANNEL, REQ_CHANNEL, NOR_IMG
+from info import ADMINS, FILE_CHANNEL, AUTH_USERS, CUSTOM_FILE_CAPTION, AUTH_GROUPS, P_TTI_SHOW_OFF, IMDB, \
+    SINGLE_BUTTON, SPELL_CHECK_REPLY, IMDB_TEMPLATE, SPELL_IMG, MSG_ALRT, FILE_FORWARD, MAIN_CHANNEL, LOG_CHANNEL, NOR_IMG
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, InputMediaPhoto
 from pyrogram import Client, filters, enums
 from pyrogram.errors import FloodWait, UserIsBlocked, MessageNotModified, PeerIdInvalid
@@ -27,8 +27,10 @@ from database.gfilters_mdb import (
     find_gfilter,
     get_gfilters,
 )
+from database.fsub_db import FSub
 import logging
 
+fsub_db = FSub
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.ERROR)
 
@@ -36,7 +38,7 @@ BUTTONS = {}
 SPELL_CHECK = {}
 FILTER_MODE = {}
 
-@Client.on_message(filters.command('autofilter') & filters.user(ADMINS))
+@Client.on_message(filters.command('autofilter') & filters.user(ADMINS), group=1)
 async def fil_mod(client, message): 
       mode_on = ["yes", "on", "true"]
       mode_of = ["no", "off", "false"]
@@ -58,7 +60,7 @@ async def fil_mod(client, message):
       else:
           await m.edit("𝚄𝚂𝙴 :- /autofilter on 𝙾𝚁 /autofilter off")
 
-@Client.on_message(filters.group | filters.private) 
+@Client.on_message(filters.group | filters.private & ~filters.forwarded) 
 async def give_filter(client,message):
     await global_filters(client, message)
     group_id = message.chat.id
@@ -229,6 +231,10 @@ async def advantage_spoll_choker(bot, query):
 
 @Client.on_callback_query()
 async def cb_handler(client: Client, query: CallbackQuery):
+
+    REQ_CHANNEL = await fsub_db().get_req_channel()
+    AUTH_CHANNEL = await fsub_db().get_auth_channel()
+    
     if query.data == "close_data":
         await query.message.delete()
     elif query.data == "delallconfirm":
@@ -446,6 +452,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
             f_caption = f_caption
         if f_caption is None:
             f_caption = f"{files.file_name}"
+            
+        
 
         try:
             if (AUTH_CHANNEL or REQ_CHANNEL) and not await is_subscribed(client, query):
