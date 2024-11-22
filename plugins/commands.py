@@ -1,4 +1,5 @@
 import os
+import sys
 import logging
 import random
 import asyncio
@@ -545,6 +546,17 @@ async def deletemultiplefiles(bot, message):
         reply_markup=InlineKeyboardMarkup(btn)
     )
 
+@Client.on_message(filters.command("restart")  & filters.user(ADMINS), group=1)
+async def restart(client, message):
+    try:
+        if os.path.exists("Media_search.session"):
+            os.remove("Media_search.session")
+        if os.path.exists("Media_search.session-journal"):
+            os.remove("Media_search.session-journal")
+        await message.reply("Restarting the bot...")
+        os.execv(sys.executable, [sys.executable, "bot.py"])
+    except Exception as e:
+        await message.reply(f"Failed to restart: {e}")
 
 @Client.on_message(filters.command("send") & filters.user(ADMINS), group=1)
 async def send_msg(bot, message):
