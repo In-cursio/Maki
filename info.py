@@ -84,7 +84,7 @@ DATABASE_URI4 = environ.get('DATABASE_URI4', "mongodb+srv://Maki4:Maki4@cluster0
 DATABASE_URI5 = environ.get('DATABASE_URI5', "mongodb+srv://Maki5:Maki5@cluster0.gkt7inw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 DATABASE_URI6 = environ.get('DATABASE_URI6', "mongodb+srv://Maki6:Maki6@cluster0.ejxrdei.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 DATABASE_NAME = environ.get('DATABASE_NAME', "maki")
-COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
+COLLECTION_NAME = environ.get('COLLECTION_NAME', 'andi')
 MONGO_URL = os.environ.get('MONGO_URL', "mongodb+srv://maki:maki@cluster0.2t0eici.mongodb.net/?retryWrites=true&w=majority")
 
 #Downloader
