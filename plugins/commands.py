@@ -546,8 +546,8 @@ async def deletemultiplefiles(bot, message):
         reply_markup=InlineKeyboardMarkup(btn)
     )
 
-@Client.on_message(filters.command("restart")  & filters.user(ADMINS), group=1)
-async def restart(client, message):
+@Client.on_message(filters.command("restart") & filters.user(ADMINS), group=1)
+async def restart(bot, message):
     try:
         if os.path.exists("Media_search.session"):
             os.remove("Media_search.session")
