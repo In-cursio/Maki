@@ -64,6 +64,7 @@ class Media2(Document):
     file_size = fields.IntField(required=True)
     file_type = fields.StrField(allow_none=True)
     mime_type = fields.StrField(allow_none=True)
+    caption = fields.StrField(allow_none=True)
     
     class Meta:
         indexes = ('$file_name', )
@@ -77,6 +78,7 @@ class Media3(Document):
     file_size = fields.IntField(required=True)
     file_type = fields.StrField(allow_none=True)
     mime_type = fields.StrField(allow_none=True)
+    caption = fields.StrField(allow_none=True)
     
     class Metaa:
         indexes = ('$file_name', )
@@ -90,6 +92,7 @@ class Media4(Document):
     file_size = fields.IntField(required=True)
     file_type = fields.StrField(allow_none=True)
     mime_type = fields.StrField(allow_none=True)
+    caption = fields.StrField(allow_none=True)
     
     class Metaa:
         indexes = ('$file_name', )
@@ -103,6 +106,7 @@ class Media5(Document):
     file_size = fields.IntField(required=True)
     file_type = fields.StrField(allow_none=True)
     mime_type = fields.StrField(allow_none=True)
+    caption = fields.StrField(allow_none=True)
     
     class Metaa:
         indexes = ('$file_name', )
@@ -116,6 +120,7 @@ class Media6(Document):
     file_size = fields.IntField(required=True)
     file_type = fields.StrField(allow_none=True)
     mime_type = fields.StrField(allow_none=True)
+    caption = fields.StrField(allow_none=True)
     
     class Metaa:
         indexes = ('$file_name', )
