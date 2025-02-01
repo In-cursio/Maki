@@ -1,5 +1,3 @@
-# Kanged From @TroJanZheX
-# REDIRECT added https://github.com/Joelkb
 import asyncio
 import re
 import ast
@@ -970,13 +968,13 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
     elif query.data == "group_info":
         buttons = [[
-            InlineKeyboardButton("Bᴏᴛ Dᴀᴛᴀʙᴀꜱᴇ", url="https://t.me/+pfrDN32ZvVk4MDNl")
+            InlineKeyboardButton("Bᴏᴛ Dᴀᴛᴀʙᴀꜱᴇ", url="https://t.me/+sv2uZ306RYJjOTI1")
                   ],[
-            InlineKeyboardButton("Gʀᴏᴜᴘ", url="https://t.me/+z4Q23t1RaWpmYmE9"),
+            InlineKeyboardButton("Gʀᴏᴜᴘ", url="https://t.me/+Dscf9-XsuWEyZGFl"),
             InlineKeyboardButton("​Cʜᴀɴɴᴇʟ", url="t.me/cv_official_channel")
                   ],[
-            InlineKeyboardButton("Sᴜᴘᴘᴏʀᴛ", url="https://t.me/+jVP2bbMEe8FiOWE1"),
-            InlineKeyboardButton("Uᴘᴅᴀᴛᴇꜱ", url="t.me/cv_updatezz")
+            InlineKeyboardButton("Sᴜᴘᴘᴏʀᴛ", url="https://t.me/PiRaTe_RiPs"),
+            InlineKeyboardButton("Uᴘᴅᴀᴛᴇꜱ", url="https://t.me/+Y480_Mj7X8liOTg1")
                   ],[
             InlineKeyboardButton("⇍Bᴀᴄᴋ", callback_data="start")
         ]]   
