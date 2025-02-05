@@ -328,7 +328,9 @@ Aᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴛᴏ sᴇᴇ ᴛʜᴇ ᴍᴀɢ�
 ▣ <a href=https://t.me/+Dscf9-XsuWEyZGFl>​Cɪɴᴇᴍᴀ 𝗙ᴀᴄᴛᴏʀʏ</a>
 ▣ <a href=https://t.me/+eBEWzRyNAGgxZGZl>​Cɪɴᴇᴍᴀ ʟᴏᴋʜᴀᴍ</a>
 ▣ <a href=t.me/CV_Official_channel>ᴄᴠ-ᴏꜰꜰɪᴄɪᴀʟ​</a>
-╚═════•✧❅✦❅✧•═════╝</b>"""
+╚═════•✧❅✦❅✧•═════╝</b>
+
+🟢𝗝𝗼𝗶𝗻 𝗕𝗼𝘁 [𝗠𝗼𝘃𝗶𝗲 𝗨𝗽𝗱𝗮𝘁𝗲 𝗖𝗵𝗮𝗻𝗻𝗲𝗹](t.me/+Y480_Mj7X8liOTg1)"""
 
     RESTART_TXT = """
 <b>Bᴏᴛ Rᴇsᴛᴀʀᴛᴇᴅ !
