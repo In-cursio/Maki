@@ -107,9 +107,9 @@ async def post_to_channels(client, callback_query):
             [InlineKeyboardButton("Get File 📁", url=custom_link)
         ]])
         caption = (
-            f"✅ {movie_title} {year}\n\n"
-            f"🎙 {selected_languages}\n\n"
-            f"📽 Genre: {genres}"
+            f"**✅ {movie_title} {year}**\n\n"
+            f"**🎙 {selected_languages}**\n\n"
+            f"**📽 Genre: {genres}**"
         )
         for channel_id in POST_CHANNELS:
             try:
