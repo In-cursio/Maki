@@ -13,6 +13,7 @@ from info import CHANNELS, ADMINS, LOG_CHANNEL, PICS, BATCH_FILE_CAPTION, CUSTOM
 from utils import get_settings, get_size, is_subscribed, save_group_settings, temp
 from database.connections_mdb import active_connection
 from plugins.fsub import ForceSub
+from .pm_filter import auto_filter
 import re
 import json
 import base64
@@ -61,6 +62,12 @@ async def start(client, message):
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )
+        return
+    if message.command[1].startswith('getfile'): #@stellar_labs
+        data = message.command[1].split("-", 1)
+        file_name = data[1].replace('-', ' ')
+        message.text = file_name
+        await auto_filter(client, message)
         return
     if len(message.command) == 2 and message.command[1] in ["subscribe", "error", "okay", "help", "start", "hehe"]:
         if message.command[1] == "subscribe":
