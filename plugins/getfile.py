@@ -1,9 +1,10 @@
+#@stellar_labs
 from utils import temp
 from utils import get_poster
 from info import POST_CHANNELS
 from pyrogram import Client, filters, enums
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-
+#@stellar_labs
 LANGUAGES = {
     'mal': 'Malayalam',
     'tam': 'Tamil', 
