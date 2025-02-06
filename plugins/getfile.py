@@ -104,12 +104,12 @@ async def post_to_channels(client, callback_query):
         selected_languages = ', '.join(temp.selected_languages) if hasattr(temp, 'selected_languages') else 'N/A'
         custom_link = f"https://t.me/{temp.U_NAME}?start=getfile-{file_name.replace(' ', '-').lower()}"
         reply_markup = InlineKeyboardMarkup([
-            [InlineKeyboardButton("Get File 📁", url=custom_link)
+            [InlineKeyboardButton("Gᴇᴛ Fɪʟᴇ 📁", url=custom_link)
         ]])
         caption = (
-            f"**✅ {movie_title} {year}**\n\n"
-            f"**🎙 {selected_languages}**\n\n"
-            f"**📽 Genre: {genres}**"
+            f"<b>✅ {movie_title} {year}</b>\n\n"
+            f"<b>🎙 {selected_languages}</b>\n\n"
+            f"<b>📽 Genre: {genres}</b>"
         )
         for channel_id in POST_CHANNELS:
             try:
